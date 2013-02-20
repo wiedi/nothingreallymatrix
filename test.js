@@ -39,7 +39,7 @@ test('#set_all_function', function() {
 })
 
 test('#row_scalar_product', function() {
-	var a = new matrix.TypedMatrix(2,2)
+	var a = new matrix.TypedMatrix(2, 2)
 	a.set(0, 0, 2)
 	a.set(0, 1, 3)
 	a.set(1, 0, 5)
@@ -49,4 +49,8 @@ test('#row_scalar_product', function() {
 	assert.equal(a.rowScalarProduct(0, a, 1), 31)
 	assert.equal(a.rowScalarProduct(1, a, 0), 31)
 	assert.equal(a.rowScalarProduct(1, a, 1), 74)
+	
+	var b = new matrix.TypedMatrix(5, 2)
+	b.setAll(11)
+	assert.equal(a.rowScalarProduct(0, b, 0), 55)
 })
