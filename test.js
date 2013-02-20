@@ -26,3 +26,16 @@ test('#set_all_and_get', function(){
 	assert.equal(m.get(1, 0), 42)
 	assert.equal(m.get(1, 1), 42)
 })
+
+test('#row_scalar_product', function(){
+	var a = new matrix.TypedMatrix(2,2)
+	a.set(0, 0, 2)
+	a.set(0, 1, 3)
+	a.set(1, 0, 5)
+	a.set(1, 1, 7)
+
+	assert.equal(a.rowScalarProduct(0, a, 0), 13)
+	assert.equal(a.rowScalarProduct(0, a, 1), 31)
+	assert.equal(a.rowScalarProduct(1, a, 0), 31)
+	assert.equal(a.rowScalarProduct(1, a, 1), 74)
+})
