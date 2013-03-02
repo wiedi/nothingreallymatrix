@@ -55,6 +55,18 @@ test('#row_scalar_product', function() {
 	assert.equal(a.rowScalarProduct(0, b, 0), 55)
 })
 
+test('#row_scalar_product_with_row_difference', function() {
+	var a = new matrix.TypedMatrix(2, 2)
+	a.set(0, 0, 2)
+	a.set(0, 1, 3)
+	a.set(1, 0, 5)
+	a.set(1, 1, 7)
+	
+	var b = new matrix.TypedMatrix(5, 2)
+	b.setAll(11)
+	assert.equal(a.rowScalarProductWithRowDifference(0, a, 0, b, 0), -42)
+})
+
 suite("SparseBoolean")
 
 test('#set_and_get', function() {
