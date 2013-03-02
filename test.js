@@ -54,3 +54,33 @@ test('#row_scalar_product', function() {
 	b.setAll(11)
 	assert.equal(a.rowScalarProduct(0, b, 0), 55)
 })
+
+suite("SparseBoolean")
+
+test('#set_and_get', function() {
+	var m = new matrix.SparseBooleanMatrix()
+	
+	assert.equal(m.get(0, 0), false)
+	m.set(0, 0, true)
+	assert.equal(m.get(0, 0), true)
+	m.set(0, 0, false)
+	assert.equal(m.get(0, 0), false)
+	
+	m.set(5, 7, true)
+	assert.equal(m.get(5, 7), true)
+	assert.equal(m.get(5, 0), false)
+	assert.equal(m.get(5, 8), false)
+	assert.equal(m.get(0, 7), false)
+})
+
+test('#get_sparse_rows_and_cols', function() {
+	var m = new matrix.SparseBooleanMatrix()
+	m.set(2, 3, true)
+	m.set(5, 7, true)
+	m.set(1, 11, true)
+	m.set(5, 11, true)
+	
+	assert.deepEqual(m.getColumn(3), [2])
+	assert.deepEqual(m.getColumn(11), [1, 5])
+	assert.deepEqual(m.getRow(5), [7, 11])
+})
